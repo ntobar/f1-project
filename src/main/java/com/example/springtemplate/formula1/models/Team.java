@@ -23,6 +23,12 @@ public class Team {
   @OneToMany(mappedBy = "team")
   private List<User> users;
 
+  @OneToMany(mappedBy = "team")
+  private List<Race> races;
+
+  @OneToMany(mappedBy = "team")
+  private List<F1_Car> f1_cars;
+
   public Integer getId() {
     return id;
   }
@@ -70,4 +76,29 @@ public class Team {
   public void setHeadquarters(String headquarters) {
     this.headquarters = headquarters;
   }
+
+  public List<Race> getRaces() {
+    return races;
+  }
+
+  public void setRaces(List<Race> races) {
+    this.races = races;
+  }
+
+  public List<F1_Car> getF1_cars() {
+    return f1_cars;
+  }
+
+  public void setF1_cars(List<F1_Car> f1_cars) {
+    this.f1_cars = f1_cars;
+  }
+  
+  public Team(String name, String abbreviation, Date foundingDate, String headquarters) {
+    this.name = name;
+    this.abbreviation = abbreviation;
+    this.foundingDate = foundingDate;
+    this.headquarters = headquarters;
+  }
+
+  public Team() {}
 }

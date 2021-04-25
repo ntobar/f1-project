@@ -1,5 +1,8 @@
 package com.example.springtemplate.formula1.models;
 
-public class Position {
-  private String postion;
+public enum Position {
+  Driver,
+  Engineer,
+  PitStaff,
+  Team_Principal;
 }

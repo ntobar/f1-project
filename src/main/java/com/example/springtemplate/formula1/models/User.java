@@ -1,7 +1,11 @@
 package com.example.springtemplate.formula1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
+import javafx.geometry.Pos;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,10 +24,13 @@ public class User {
   private String password;
   private String email;
   private Date dateOfBirth;
-  private Position position;
 
   @ManyToOne
+  @JsonIgnore
   private Team team;
+
+  @Enumerated(EnumType.STRING)
+  private Position position;
 
   public Integer getId() {
     return id;
@@ -96,5 +103,19 @@ public class User {
   public void setTeam(Team team) {
     this.team = team;
   }
+
+  public User(String firstName, String lastName, String username, String email, String password, Date dateOfBirth, Team team, Position position) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.dateOfBirth = dateOfBirth;
+    this.team = team;
+    this.position = position;
+  }
+
+  public User() {}
+
 }
 
