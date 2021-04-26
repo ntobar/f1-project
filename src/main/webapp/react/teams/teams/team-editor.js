@@ -18,19 +18,29 @@ const TeamEditor = () => {
     .then(team => setTeam(team))
 
   const createTeam = (team) => {
-    service.createTeam(team)
-          .then(() => history.goBack())
+     service.createTeam(team)
+          .then(() => history.push("/"))
   }
 
 
   const updateTeam = (teamId, newTeam) => {
     service.updateTeam(teamId, newTeam)
-      .then(() => history.goBack())
+      .then(() => history.push("/"))
   }
 
-  const deleteTeam = (teamId) =>
-    service.deleteTeam(teamId)
-      .then(() => history.goBack())
+  //
+  // async function deleteTeam(teamId) {
+  //     const response = await service.deleteTeam(teamId);
+  //     history.push("/")
+  //
+  //   }
+
+
+  const deleteTeam = (teamId) => {
+      service.deleteTeam(teamId)
+      .then(() => history.push("/"));
+
+  }
 
   return (
     <div>

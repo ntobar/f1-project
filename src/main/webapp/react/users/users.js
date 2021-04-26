@@ -1,4 +1,5 @@
 import User from "./user";
+const USER_URL = 'http://localhost:8080/api/users'
 
 const { useState, useEffect } = React;
 
@@ -6,7 +7,7 @@ const Users = () => {
     const [users, setUsers] = useState([])
     const [newUser, setNewUser] = useState({})
     const createUser = (user) =>
-        fetch(`https://wbdv-generic-server.herokuapp.com/api/jannunzi/users`, {
+        fetch(USER_URL, {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {'content-type': 'application/json'}
@@ -18,7 +19,7 @@ const Users = () => {
             .then(response => response.json())
             .then(user => setUsers(users => (users.map(user => user._id === id ? newUser : user))))
     const findAllUsers = () =>
-        fetch(`http://localhost:8080/orm/find/users`)
+        fetch(USER_URL)
             .then(response => response.json())
             .then(users => setUsers(users))
     const deleteUser = (id) =>

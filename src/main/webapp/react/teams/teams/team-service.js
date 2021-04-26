@@ -17,39 +17,72 @@ const findTeamById = (teamId) => {
 }
 
 // update the name of a team
-const updateTeamName = (teamId, newTeamName) => {
-    return fetch(`${TEAM_URL}/${teamId}/name/${newTeamName}`)
-        .then((response) => {
-          return response.json()
-        })
+async function updateTeamName(teamId, newTeamName) {
+    const response = await fetch(`${TEAM_URL}/${teamId}/name/${newTeamName}`);
+
+            return response.json();
 }
+
+// // update the name of a team
+// const updateTeamName = (teamId, newTeamName) => {
+//     return fetch(`${TEAM_URL}/${teamId}/name/${newTeamName}`)
+//         .then((response) => {
+//           return response.json()
+//         })
+// }
 
 // delete a team by id
-const deleteTeam = (teamId) => {
-  fetch(`${TEAM_URL}/${teamId}`, {
-    method: "DELETE"
-  })
+async function deleteTeam(teamId) {
+    await fetch(`${TEAM_URL}/${teamId}`, {
+        method: "DELETE"
+    })
 }
+
+// // delete a team by id
+// const deleteTeam = (teamId) => {
+//   fetch(`${TEAM_URL}/${teamId}`, {
+//     method: "DELETE"
+//   })
+// }
 
 // create a new team
-const createTeam = (team) => {
-  fetch(TEAM_URL, {
-    method: "POST",
-    body: JSON.stringify(team),
-    headers: {'content-type': 'application/json'}
-  })
-  .then(response => response.json())
+async function createTeam(team) {
+    const response = await fetch(TEAM_URL, {
+        method: "POST",
+        body: JSON.stringify(team),
+        headers: {'content-type': 'application/json'}
+    })
+        response.json();
 }
 
+// // create a new team
+// const createTeam = (team) => {
+//   fetch(TEAM_URL, {
+//     method: "POST",
+//     body: JSON.stringify(team),
+//     headers: {'content-type': 'application/json'}
+//   })
+//   .then(response => response.json())
+// }
+
 // update a team by id
-const updateTeam = (teamId, newTeam) => {
-  fetch(`${TEAM_URL}/${teamId}`, {
+async function updateTeam(teamId, newTeam) {
+  const response = await fetch(`${TEAM_URL}/${teamId}`, {
     method: "PUT",
-    body: JSON.stringify(team),
+    body: JSON.stringify(newTeam),
     headers: {'content-type': 'application/json'}
-  })
-  .then(response => response.json())
+  });
+  response.json();
 }
+
+// const updateTeam = (teamId, newTeam) => {
+//   fetch(`${TEAM_URL}/${teamId}`, {
+//     method: "PUT",
+//     body: JSON.stringify(team),
+//     headers: {'content-type': 'application/json'}
+//   })
+//   .then(response => response.json())
+// }
 
 export default {
   findAllTeams,

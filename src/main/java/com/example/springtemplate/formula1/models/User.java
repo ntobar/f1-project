@@ -2,7 +2,7 @@ package com.example.springtemplate.formula1.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
-import javafx.geometry.Pos;
+//import javafx.geometry.Pos;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
